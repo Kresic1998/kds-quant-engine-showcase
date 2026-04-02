@@ -1,0 +1,11 @@
+# Headless Quant Engine (showcase)
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.0
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+yfinance>=0.2.30
+
+# Optional dev
+pytest>=7.4.0
+pytest-cov>=4.1.0

@@ -1,0 +1,16 @@
+# Reference workflow from the full KDS Quant monorepo. This showcase tree does not
+# ship `live_refresh.py`; enable schedules in a private fork that includes it.
+name: Heartbeat (live_refresh every 30m)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Showcase placeholder
+        run: |
+          echo "Skipped: live_refresh.py and full engine are not in this public slice."
+          echo "Copy this workflow to a private repo or restore entrypoints to activate."

@@ -1,0 +1,13 @@
+# Reference: perf backfill + DB publish. Requires full engine and CLIs.
+name: Perf backfill and publish DB
+
+on:
+  workflow_dispatch:
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Showcase placeholder
+        run: echo "Skipped: backfill tooling not included in public showcase."

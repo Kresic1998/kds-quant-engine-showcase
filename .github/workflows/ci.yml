@@ -1,0 +1,49 @@
+name: CI
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  PYTHONUNBUFFERED: "1"
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install dependencies
+        run: |
+          set -euxo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install "pytest-cov>=4.1.0"
+
+      - name: Ensure no committed Streamlit secrets in workspace
+        run: rm -f .streamlit/secrets.toml
+
+      - name: Run tests with coverage (engine subset)
+        run: |
+          set -euxo pipefail
+          python -m pytest tests/ -q \
+            --cov=engine \
+            --cov-report=term-missing:skip-covered \
+            --cov-fail-under=30

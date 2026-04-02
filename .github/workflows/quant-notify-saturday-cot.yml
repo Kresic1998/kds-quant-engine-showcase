@@ -1,0 +1,13 @@
+# Reference: Saturday COT package notify. Full monorepo only.
+name: Quant notify — Saturday COT package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  saturday:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Showcase placeholder
+        run: echo "Skipped: quant_notify stack not shipped in public showcase."

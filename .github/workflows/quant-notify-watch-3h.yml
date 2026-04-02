@@ -1,0 +1,13 @@
+# Reference: session-aware watch notify. Full monorepo only.
+name: Quant notify — watch (London OR NY session)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Showcase placeholder
+        run: echo "Skipped: quant_notify stack not shipped in public showcase."

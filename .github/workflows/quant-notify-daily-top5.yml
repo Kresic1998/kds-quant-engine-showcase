@@ -1,0 +1,13 @@
+# Reference: full repo runs `quant_notify_cli.py` on a schedule. Not runnable here.
+name: Quant notify — daily Top 5 (pre-London)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Showcase placeholder
+        run: echo "Skipped: quant_notify_cli and notify engine modules are not in this slice."
