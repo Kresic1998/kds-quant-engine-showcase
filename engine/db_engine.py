@@ -258,6 +258,18 @@ def ensure_sqlite_database_file_ready() -> None:
             shutil.copy2(seed, target)
         except OSError:
             pass
+    # Repo seed is often gitignored (*.db); CI has no file to copy — still need a real DB path.
+    if not target.exists() or target.stat().st_size == 0:
+        if target.exists():
+            try:
+                target.unlink()
+            except OSError:
+                pass
+        try:
+            with sqlite3.connect(str(target)) as conn:
+                conn.execute("SELECT 1")
+        except OSError:
+            pass
 
 
 def init_signal_db():
