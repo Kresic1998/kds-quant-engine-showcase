@@ -267,7 +267,8 @@ def ensure_sqlite_database_file_ready() -> None:
                 pass
         try:
             with sqlite3.connect(str(target)) as conn:
-                conn.execute("SELECT 1")
+                conn.execute("CREATE TABLE IF NOT EXISTS _bootstrap (id INTEGER PRIMARY KEY)")
+                conn.execute("DROP TABLE _bootstrap")
         except OSError:
             pass
 
